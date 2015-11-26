@@ -1,6 +1,6 @@
 {
   "name": "fishirc",
-  "version": "1.0.1",
+  "version": "1.0.1-patch",
   "description": "",
   "main": "blowcrypt.js",
   "scripts": {
