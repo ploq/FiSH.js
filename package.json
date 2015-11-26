@@ -1,22 +1,14 @@
 {
-  "name": "node_fish",
+  "name": "fishirc",
   "version": "1.0.0",
   "description": "",
-<<<<<<< HEAD
+  "main": "blowcrypt.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "skuom",
-=======
-  "main": "fish.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
->>>>>>> 7031ceef44e75da0fd22364e874a0542d8ec0775
   "license": "ISC",
   "dependencies": {
-    "bufferpack": "0.0.6",
-    "mcrypt": "^0.1.9"
+    "bufferpack": "0.0.6"
   }
 }

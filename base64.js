@@ -86,9 +86,9 @@ function bc64_decode(s) {
         for (var index in curr) {
             left = bor(left, lshift(B64.indexOf(curr[index]), (index*6)));
         }
-        res.push(buffer.pack(">LL", [left, right]));
+        res.push(buffer.pack(">LL", [left, right]).toString("binary"));
     }
-    return res;
+    return res.join("");
 }
 
 module.exports = {
