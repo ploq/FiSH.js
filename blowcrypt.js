@@ -19,13 +19,13 @@ function decrypt_message(msg, key) {
     return res.replace(/\0/g, "");
 }
 
-function encrypt_message(msg, key) {  
-    var cipher = crypto.createCipheriv("bf-ecb", key, ""); 
-    cipher.setAutoPadding(true);  
+function encrypt_message(msg, key) {
+    var cipher = crypto.createCipheriv("bf-ecb", key, "");
+    cipher.setAutoPadding(true);
     var res = cipher.update(new Buffer(msg));
-    cipher.final();  
 
-    return "+OK " + bc64.bc64_encode(res).toString(); }
+    return "+OK " + bc64.bc64_encode(Buffer.concat([res, cipher.final()])).toString();
+}
 
 module.exports = {
     decrypt_msg: decrypt_message,
