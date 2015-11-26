@@ -21,7 +21,7 @@ function decrypt_message(msg, key) {
 
 function encrypt_message(msg, key) {  
     var cipher = crypto.createCipheriv("bf-ecb", key, ""); 
-    cipher.setAutoPadding(false);  
+    cipher.setAutoPadding(true);  
     var res = cipher.update(new Buffer(msg));
     cipher.final();  
 
