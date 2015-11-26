@@ -19,10 +19,7 @@ function decrypt_message(msg, key) {
     return res.replace(/\0/g, "");
 }
 
-function encrypt_message(msg, key) { 
-    if (msg.length % 8 != 0) { 
-        msg = msg.concat(new Array(9 - msg.length % 8).join("\0")); 
-    } 
+function encrypt_message(msg, key) {  
     var cipher = crypto.createCipheriv("bf-ecb", key, ""); 
     cipher.setAutoPadding(false);  
     var res = cipher.update(new Buffer(msg));
