@@ -9,6 +9,7 @@
   "author": "skuom",
   "license": "ISC",
   "dependencies": {
-    "bufferpack": "0.0.6"
+    "bufferpack": "0.0.6",
+    "string": "^3.3.1"
   }
 }

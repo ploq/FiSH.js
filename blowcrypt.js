@@ -1,5 +1,6 @@
 var bc64 = require("./base64");
 var crypto = require("crypto");
+var S = require("string");
 
 function decrypt_message(msg, key) {
     //Assumes message is blowcrypt base64 encoded
@@ -22,12 +23,14 @@ function decrypt_message(msg, key) {
 }
 
 function encrypt_message(msg, key) {
-    var pad = new Array((8 - msg.length % 8)/2).join("\0");
-    msg = msg + pad;
+    msg = S(msg);
+    for (var n = 0; Buffer(msg.s).length % 8 !== 0; n++) {
+        msg = S(msg).padRight(msg.length+1, "\0");
+    }
 
     var cipher = crypto.createCipheriv("bf-ecb", key, "");
     cipher = cipher.setAutoPadding(false);
-    var res = cipher.update(new Buffer(msg));
+    var res = cipher.update(new Buffer(msg.s));
 
     return "+OK " + bc64.bc64_encode(Buffer.concat([res,cipher.final()])).toString();
 }
