@@ -5,6 +5,8 @@ function decrypt_message(msg, key) {
     //Assumes message is blowcrypt base64 encoded
     if (msg.startsWith("+OK ")) {
         msg = msg.slice(4);
+    } else {
+        return msg;
     }
 
     msg = bc64.bc64_decode(msg);
