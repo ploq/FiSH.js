@@ -20,11 +20,14 @@ function decrypt_message(msg, key) {
 }
 
 function encrypt_message(msg, key) {
+    var pad = new Array((8 - msg.length % 8)/2).join("\0");
+    msg = msg + pad;
+
     var cipher = crypto.createCipheriv("bf-ecb", key, "");
-    cipher.setAutoPadding(true);
+    cipher = cipher.setAutoPadding(false);
     var res = cipher.update(new Buffer(msg));
 
-    return "+OK " + bc64.bc64_encode(Buffer.concat([res, cipher.final()])).toString();
+    return "+OK " + bc64.bc64_encode(Buffer.concat([res,cipher.final()])).toString();
 }
 
 module.exports = {
